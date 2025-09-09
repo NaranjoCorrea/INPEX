@@ -193,7 +193,6 @@
   <div class="controls-container">
     <button id="decrease-text" title="Reducir tamaño del texto">− </button>
     <button id="increase-text" title="Aumentar tamaño del texto">+</button>
-    <button id="print-button" title="Imprimir o Guardar como PDF">🖨️</button>
   </div>
 
   <div class="page">
@@ -246,7 +245,6 @@
     const letterBody = document.querySelector('.letter-body');
     const increaseBtn = document.getElementById('increase-text');
     const decreaseBtn = document.getElementById('decrease-text');
-    const printBtn = document.getElementById('print-button');
 
     let currentFontSize = parseFloat(getComputedStyle(letterBody).fontSize);
     
@@ -267,12 +265,6 @@
         currentFontSize -= 0.5;
         updateFontSize(currentFontSize);
       }
-    });
-
-    printBtn.addEventListener('click', () => {
-      // Este es el método estándar para abrir el cuadro de diálogo de impresión.
-      // Su funcionalidad puede depender de las restricciones del navegador o del entorno.
-      window.print();
     });
   });
 </script>
