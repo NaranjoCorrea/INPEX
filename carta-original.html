@@ -16,19 +16,38 @@
 
     body {
       font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.5; /* Reducido para comprimir el texto */
-      font-size: 10.5pt; /* Ligeramente reducido para que quepa en menos páginas */
+      line-height: 1.5;
+      font-size: 10.5pt;
       color: var(--text);
       background-color: #f4f4f4;
       margin: 0;
       padding: 0;
     }
 
+    .controls-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 5px;
+      z-index: 10;
+    }
+    
+    .controls-container button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
     .page {
-      width: 21cm; /* Ancho de un folio A4 */
-      min-height: 29.7cm; /* Alto de un folio A4 */
+      width: 21cm;
+      min-height: 29.7cm;
       margin: 2cm auto;
-      padding: 2.5cm 2cm; /* Aumento del padding superior */
+      padding: 2.5cm 2cm;
       background: white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       box-sizing: border-box;
@@ -45,6 +64,9 @@
         margin: 0;
         box-shadow: none;
         page-break-after: auto;
+      }
+      .controls-container {
+        display: none;
       }
     }
 
@@ -88,7 +110,7 @@
       top: 0;
       right: 0;
     }
-
+    
     h1 {
       font-size: 1.8rem;
       font-weight: 700;
@@ -111,7 +133,7 @@
     }
 
     .letter-body p {
-      margin: 0 0 1.1rem 0; /* Reducido el espacio entre párrafos */
+      margin: 0 0 1.1rem 0;
     }
     
     .destacado {
@@ -121,7 +143,7 @@
 
     /* Firma y pie de página */
     .signature-section {
-      margin-top: 2rem; /* Reducido el margen para acercarlo al texto */
+      margin-top: 2rem;
       text-align: left;
     }
     
@@ -148,6 +170,12 @@
   </style>
 </head>
 <body>
+  
+  <div class="controls-container">
+    <button id="decrease-text" title="Reducir tamaño del texto">A-</button>
+    <button id="increase-text" title="Aumentar tamaño del texto">A+</button>
+    <button id="print-button" title="Imprimir o Guardar como PDF">🖨️</button>
+  </div>
 
   <div class="page">
     <div class="header">
@@ -194,5 +222,38 @@
     </div>
   </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const letterBody = document.querySelector('.letter-body');
+    const increaseBtn = document.getElementById('increase-text');
+    const decreaseBtn = document.getElementById('decrease-text');
+    const printBtn = document.getElementById('print-button');
+
+    let currentFontSize = parseFloat(getComputedStyle(letterBody).fontSize);
+    
+    // Función para actualizar el tamaño de la fuente
+    const updateFontSize = (size) => {
+      letterBody.style.fontSize = `${size}px`;
+    };
+
+    increaseBtn.addEventListener('click', () => {
+      if (currentFontSize < 18) {
+        currentFontSize += 0.5;
+        updateFontSize(currentFontSize);
+      }
+    });
+
+    decreaseBtn.addEventListener('click', () => {
+      if (currentFontSize > 9) {
+        currentFontSize -= 0.5;
+        updateFontSize(currentFontSize);
+      }
+    });
+
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+  });
+</script>
 </body>
 </html>
