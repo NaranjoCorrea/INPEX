@@ -29,17 +29,36 @@
       top: 20px;
       right: 20px;
       display: flex;
-      gap: 5px;
+      gap: 10px;
       z-index: 10;
     }
     
     .controls-container button {
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 5px 8px;
-      font-size: 0.8rem;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
       cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      color: var(--muted);
+      transition: all 0.2s ease-in-out;
+      outline: none;
+    }
+
+    .controls-container button:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      color: var(--brand);
+    }
+    
+    .controls-container button:active {
+      transform: translateY(0);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
@@ -172,8 +191,8 @@
 <body>
   
   <div class="controls-container">
-    <button id="decrease-text" title="Reducir tamaño del texto">A-</button>
-    <button id="increase-text" title="Aumentar tamaño del texto">A+</button>
+    <button id="decrease-text" title="Reducir tamaño del texto">− </button>
+    <button id="increase-text" title="Aumentar tamaño del texto">+</button>
     <button id="print-button" title="Imprimir o Guardar como PDF">🖨️</button>
   </div>
 
@@ -251,6 +270,8 @@
     });
 
     printBtn.addEventListener('click', () => {
+      // Este es el método estándar para abrir el cuadro de diálogo de impresión.
+      // Su funcionalidad puede depender de las restricciones del navegador o del entorno.
       window.print();
     });
   });
