@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fran Naranjo | Candidatura a la Dirección del INPEX (UEx)</title>
   <meta name="description" content="Descubre el programa y la trayectoria de Fran Naranjo, candidato a la Dirección del Instituto de Investigación y Prospectiva Educativa (INPEX) de la UEx. Propuesta enfocada en la defensa, visibilidad y crecimiento de la investigación educativa, social y psicológica." />
+  <link rel="canonical" href="https://naranjocorrea.github.io/INPEX/" />
   
+  <!-- Open Graph -->
   <meta property="og:title" content="Fran Naranjo | Candidatura Dirección INPEX (UEx)" />
   <meta property="og:description" content="Programa completo, prioridades y trayectoria de Fran Naranjo para dirigir el INPEX. Una propuesta para defender la investigación educativa, psicológica y social." />
   <meta property="og:type" content="website" />
@@ -13,13 +15,14 @@
   <meta property="og:image" content="assets/logo-inpex.png" />
   <meta property="og:locale" content="es_ES" />
   
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fran Naranjo | Candidatura Dirección INPEX (UEx)">
   <meta name="twitter:description" content="Descubre la propuesta de Fran Naranjo para dirigir el INPEX de la UEx. Conoce su programa de 10 medidas, prioridades y trayectoria profesional.">
   <meta name="twitter:image" content="assets/logo-inpex.png">
 
   <meta name="theme-color" content="#006633" />
-  <link rel="icon" href="assets/logo-inpex.png">
+  <link rel="icon" href="assets/logo-inpex.png" sizes="any">
   <style>
     /* --- CSS base --- */
     :root {
@@ -40,7 +43,7 @@
       --muted-dark: #a0a0a0; /* Texto muted en modo oscuro */
       --surface-dark: #1e1e1e; /* Superficies en modo oscuro */
       --border-dark: #333333; /* Bordes en modo oscuro */
-      --brand-dark: #00cc66; /* Un verde un poco más brillante para el modo oscuro para contraste */
+      --brand-dark: #00cc66; /* Verde más brillante en oscuro para contraste */
       --brand-700-dark: #00994d;
       --brand-50-dark: #0d281a;
     }
@@ -57,9 +60,7 @@
       --brand-50: var(--brand-50-dark);
     }
 
-    html {
-      scroll-behavior: smooth
-    }
+    html { scroll-behavior: smooth }
 
     body {
       margin: 0;
@@ -69,372 +70,102 @@
       transition: background-color .3s ease, color .3s ease;
     }
 
-    a {
-      color: var(--brand)
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
     }
 
-    a:hover {
-      color: var(--brand-700)
-    }
+    a { color: var(--brand) }
+    a:hover { color: var(--brand-700) }
 
-    .container {
-      width: min(1100px, 92%);
-      margin-inline: auto
-    }
+    .container { width: min(1100px, 92%); margin-inline: auto }
 
-    .skip {
-      position: absolute;
-      left: -9999px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden
-    }
-
+    .skip { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden }
     .skip:focus {
-      left: 1rem;
-      top: 1rem;
-      width: auto;
-      height: auto;
-      padding: .5rem .75rem;
-      background: var(--bg);
-      border: 2px solid var(--brand);
-      border-radius: .5rem;
-      z-index: 9999
+      left: 1rem; top: 1rem; width: auto; height: auto; padding: .5rem .75rem;
+      background: var(--bg); border: 2px solid var(--brand); border-radius: .5rem; z-index: 9999
     }
 
     /* --- Header / hero --- */
-    header.hero {
-      position: relative;
-      isolation: isolate;
-    }
-
+    header.hero { position: relative; isolation: isolate; }
     .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(1200px 400px at 50% -10%, var(--brand-50), transparent), linear-gradient(180deg, var(--surface), transparent 60%);
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(1200px 400px at 50% -10%, var(--brand-50), transparent),
+                  linear-gradient(180deg, var(--surface), transparent 60%);
       z-index: -1
     }
 
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: .75rem 0;
-    }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 0; }
+    .brand { display: flex; align-items: center; gap: .75rem }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: .75rem
-    }
+    .brand-logo { height: 42px; width: auto; display: block }
 
-    .logo {
-      width: 40px;
-      height: 40px;
-      border-radius: .5rem;
-      background: var(--brand);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 700
-    }
+    nav a { padding: .5rem .75rem; border-radius: .5rem; text-decoration: none; color: inherit }
+    nav a.active { background: var(--brand-50); color: var(--brand) }
 
-    .brand-logo {
-      height: 42px;
-      width: auto;
-      display: block
-    }
+    .hero-main { display: grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items: center; padding: 2rem 0 1rem }
+    @media (max-width:880px) { .hero-main { grid-template-columns: 1fr; text-align: center; } }
 
-    nav a {
-      padding: .5rem .75rem;
-      border-radius: .5rem;
-      text-decoration: none;
-      color: inherit
-    }
+    h1 { font-size: clamp(1.6rem, 2.8vw + .6rem, 3rem); line-height: 1.1; margin: .2rem 0 }
+    .subtitle { font-size: clamp(1rem, .9vw + .6rem, 1.35rem); color: var(--muted) }
 
-    nav a.active {
-      background: var(--brand-50);
-      color: var(--brand)
-    }
+    .kicker { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; color: var(--brand);
+      background: var(--brand-50); padding: .35rem .6rem; border-radius: 999px }
 
-    .hero-main {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 2rem;
-      align-items: center;
-      padding: 2rem 0 1rem
-    }
+    .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem }
 
-    @media (max-width:880px) {
-      .hero-main {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
+    .btn { border: 1px solid var(--border); padding: .7rem 1rem; border-radius: .8rem; text-decoration: none; font-weight: 600; transition: all .2s ease-in-out; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--brand); color: #fff; border-color: transparent; }
+    .btn.ghost { background: transparent; }
 
-    h1 {
-      font-size: clamp(1.6rem, 2.8vw + .6rem, 3rem);
-      line-height: 1.1;
-      margin: .2rem 0
-    }
-
-    .subtitle {
-      font-size: clamp(1rem, .9vw + .6rem, 1.35rem);
-      color: var(--muted)
-    }
-
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      font-weight: 600;
-      color: var(--brand);
-      background: var(--brand-50);
-      padding: .35rem .6rem;
-      border-radius: 999px
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .75rem;
-      margin-top: 1.25rem
-    }
-
-    .btn {
-      border: 1px solid var(--border);
-      padding: .7rem 1rem;
-      border-radius: .8rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all .2s ease-in-out;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn.primary {
-      background: var(--brand);
-      color: #fff;
-      border-color: transparent;
-    }
-
-    .btn.ghost {
-      background: transparent;
-    }
-
-    .avatar {
-      width: 180px;
-      height: 180px;
-      border-radius: 1.25rem;
-      object-fit: cover;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
-      border: 4px solid rgba(255, 255, 255, .7)
-    }
+    .avatar { width: 180px; height: 180px; border-radius: 1.25rem; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,.08); border: 4px solid rgba(255,255,255,.7) }
 
     /* --- Sections --- */
-    section {
-      padding: 2.5rem 0;
-      scroll-margin-top: 80px
-    }
+    section { padding: 2.5rem 0; scroll-margin-top: 80px }
+    h2.section-title { font-size: 1.6rem; margin: 0 0 1rem }
+    .lead { font-size: 1.07rem; color: var(--muted) }
 
-    h2.section-title {
-      font-size: 1.6rem;
-      margin: 0 0 1rem
-    }
+    .grid { display: grid; gap: 1rem }
+    .grid.cols-2 { grid-template-columns: 1fr 1fr }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr) }
+    @media (max-width:880px){ .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr } }
 
-    .lead {
-      font-size: 1.07rem;
-      color: var(--muted)
-    }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1rem; break-inside: avoid-page; transition: background-color .3s ease, border-color .3s ease; }
 
-    .grid {
-      display: grid;
-      gap: 1rem
-    }
+    .chip { display: inline-block; padding: .25rem .5rem; border: 1px solid var(--border); border-radius: .5rem; color: var(--muted); font-size: .85rem }
 
-    .grid.cols-2 {
-      grid-template-columns: 1fr 1fr
-    }
+    .list { list-style: none; padding: 0; margin: 0 }
+    .list li { padding: .6rem .2rem; border-bottom: 1px dashed var(--border) }
+    .list li:last-child { border-bottom: none }
 
-    .grid.cols-3 {
-      grid-template-columns: repeat(3, 1fr)
-    }
+    .ok { color: var(--ok) }
 
-    @media (max-width:880px) {
+    .summary { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem }
+    @media (max-width:880px){ .summary { grid-template-columns: 1fr } }
 
-      .grid.cols-2,
-      .grid.cols-3 {
-        grid-template-columns: 1fr
-      }
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 1rem;
-      break-inside: avoid-page;
-      transition: background-color .3s ease, border-color .3s ease;
-    }
-
-    .chip {
-      display: inline-block;
-      padding: .25rem .5rem;
-      border: 1px solid var(--border);
-      border-radius: .5rem;
-      color: var(--muted);
-      font-size: .85rem
-    }
-
-    .list {
-      list-style: none;
-      padding: 0;
-      margin: 0
-    }
-
-    .list li {
-      padding: .6rem .2rem;
-      border-bottom: 1px dashed var(--border)
-    }
-
-    .list li:last-child {
-      border-bottom: none
-    }
-
-    .ok {
-      color: var(--ok)
-    }
-
-    .summary {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem
-    }
-
-    @media (max-width:880px) {
-      .summary {
-        grid-template-columns: 1fr
-      }
-    }
-
-    /* --- Timeline --- */
-    .timeline {
-      position: relative;
-      margin-left: .75rem
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 7px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--border)
-    }
-
-    .tl-item {
-      position: relative;
-      padding-left: 1.75rem;
-      margin-bottom: .9rem
-    }
-
-    .tl-item::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: .2rem;
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
-      background: var(--brand)
-    }
+    /* --- Timeline (no usada por ahora) --- */
+    .timeline { position: relative; margin-left: .75rem }
+    .timeline::before { content: ""; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: var(--border) }
+    .tl-item { position: relative; padding-left: 1.75rem; margin-bottom: .9rem }
+    .tl-item::before { content: ""; position: absolute; left: 0; top: .2rem; width: 14px; height: 14px; border-radius: 999px; background: var(--brand) }
 
     /* --- Footer --- */
-    footer {
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      transition: border-color .3s ease, color .3s ease;
-      position: relative; /* Para posicionar el switch */
-    }
+    footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--muted); transition: border-color .3s ease, color .3s ease; position: relative; }
 
     /* --- Theme Switcher --- */
-    .theme-switcher {
-      position: absolute;
-      right: 1.5rem; /* Ajuste para que se vea bien */
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1000;
-    }
-
-    .theme-switcher button {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: .5rem .75rem;
-      border-radius: .5rem;
-      cursor: pointer;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      transition: background-color .2s ease, color .2s ease, border-color .2s ease;
-    }
-
-    .theme-switcher button:hover {
-      background: var(--brand-50);
-      color: var(--brand);
-      border-color: var(--brand);
-    }
-
-    .theme-switcher svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    @media (max-width: 600px) {
-      .theme-switcher {
-        position: static;
-        transform: none;
-        margin: 1rem auto 0;
-        text-align: center;
-      }
-    }
+    .theme-switcher { position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); z-index: 1000; }
+    .theme-switcher button { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: .5rem .75rem; border-radius: .5rem; cursor: pointer; font-size: 1rem; display: flex; align-items: center; gap: .5rem; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+    .theme-switcher button:hover { background: var(--brand-50); color: var(--brand); border-color: var(--brand); }
+    .theme-switcher svg { width: 20px; height: 20px; fill: currentColor; }
+    @media (max-width:600px){ .theme-switcher { position: static; transform: none; margin: 1rem auto 0; text-align: center; } }
 
     /* --- Print (A4) --- */
-    @page {
-      size: A4;
-      margin: 16mm;
-    }
-
+    @page { size: A4; margin: 16mm; }
     @media print {
-      nav,
-      .actions,
-      .form,
-      .feedback,
-      .skip,
-      .theme-switcher {
-        display: none !important
-      }
-
-      header.hero {
-        padding-bottom: 0
-      }
-
-      section {
-        padding: 1.2rem 0
-      }
-
-      .card {
-        break-inside: avoid-page;
-      }
+      nav, .actions, .form, .feedback, .skip, .theme-switcher { display: none !important }
+      header.hero { padding-bottom: 0 }
+      section { padding: 1.2rem 0 }
+      .card { break-inside: avoid-page; }
     }
   </style>
 </head>
@@ -444,7 +175,7 @@
   <header class="hero" id="inicio" aria-label="Cabecera del sitio">
     <div class="container topbar">
       <div class="brand">
-        <img class="brand-logo" src="assets/logo-inpex.png" alt="Logotipo del Instituto Universitario de Investigación y Prospectiva Educativa (INPEX)" onerror="this.style.display='none'" />
+        <img class="brand-logo" src="assets/logo-inpex.png" alt="Logotipo del Instituto Universitario de Investigación y Prospectiva Educativa (INPEX)" onerror="this.style.display='none'" loading="eager" decoding="async" />
         <strong>INPEX</strong>
       </div>
       <nav aria-label="Navegación principal del sitio">
@@ -468,7 +199,8 @@
         </div>
       </div>
       <div style="text-align:center">
-        <img class="avatar" src="assets/foto-flnc.jpg" alt="Foto de Fran Naranjo, candidato a la dirección del INPEX." onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 240\'%3E%3Crect width=\'240\' height=\'240\' rx=\'24\' fill=\'%23f3f4f6\'/%3E%3Ctext x=\'50%25\' y=\'54%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Arial\' font-size=\'22\' fill=\'%2399a\'%3EFoto no disponible%3C/text%3E%3C/svg%3E'" />
+        <img class="avatar" src="assets/foto-flnc.jpg" alt="Foto de Fran Naranjo, candidato a la dirección del INPEX." loading="lazy" decoding="async"
+          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 240\'%3E%3Crect width=\'240\' height=\'240\' rx=\'24\' fill=\'%23f3f4f6\'/%3E%3Ctext x=\'50%25\' y=\'54%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Arial\' font-size=\'22\' fill=\'%2399a\'%3EFoto no disponible%3C/text%3E%3C/svg%3E'" />
       </div>
     </div>
   </header>
@@ -491,19 +223,19 @@
             <li><strong>Transparencia.</strong> Dirección de puertas abiertas, rendición de cuentas y toma de decisiones colegiada.</li>
           </ol>
         </div>
-       <div class="card">
-  <p class="lead"><strong>¿Por qué ahora?</strong> Investigamos con éxito en el Plan Estatal y en Europa, pero el sistema regional nos ha dejado fuera en ocasiones. No pedimos privilegios: exigimos trato justo y reconocimiento a nuestro rendimiento real.</p>
-  <ul class="list" aria-label="Puntos clave de la candidatura">
-    <li><span class="ok">✔</span> <strong>Defensa rigurosa</strong>strong>, con argumentos y datos, en los espacios donde se deciden las políticas científicas.</li>
-    <li><span class="ok">✔</span> <strong>Participación y presión colectiva:</strong>strong> esta tarea no la resuelve una persona sola.</li>
-    <li><span class="ok">✔</span> <strong>Un INPEX plural</strong>strong> que lidera debates clave con impacto científico y social.</li>
-    <li><span class="ok">✔</span> <strong>Ventana de oportunidad.</strong> El PRI/RIS3 está en fase de ajuste: es el momento de influir con evidencia.</li>
-    <li><span class="ok">✔</span> <strong>Tracción demostrada.</strong> Rendimiento acreditado en Plan Estatal y Europa: coherencia al pedir encaje en el PRI.</li>
-    <li><span class="ok">✔</span> <strong>Impacto territorial.</strong> Retorno directo en centros, equidad y bienestar docente.</li>
-    <li><span class="ok">✔</span> <strong>Retención y atracción de talento.</strong> Un PRI inclusivo evita fuga e incorpora nuevos grupos al INPEX.</li>
-    <li><span class="ok">✔</span> <strong>Capacidad operativa.</strong> Agenda de interlocución y documentos de posición listos.</li>
-  </ul>
-</div>
+        <div class="card">
+          <p class="lead"><strong>¿Por qué ahora?</strong> Investigamos con éxito en el Plan Estatal y en Europa, pero el sistema regional nos ha dejado fuera en ocasiones. No pedimos privilegios: exigimos trato justo y reconocimiento a nuestro rendimiento real.</p>
+          <ul class="list" aria-label="Puntos clave de la candidatura">
+            <li><span class="ok" aria-hidden="true">✔</span> <strong>Defensa rigurosa</strong>, con argumentos y datos, en los espacios donde se deciden las políticas científicas.</li>
+            <li><span class="ok" aria-hidden="true">✔</span> <strong>Participación y presión colectiva:</strong> esta tarea no la resuelve una persona sola.</li>
+            <li><span class="ok" aria-hidden="true">✔</span> <strong>Un INPEX plural</strong> que lidera debates clave con impacto científico y social.</li>
+            <li><span class="ok" aria-hidden="true">✔</span> <strong>Ventana de oportunidad.</strong> El PRI/RIS3 está en fase de ajuste: es el momento de influir con evidencia.</li>
+            <li><span class="ok" aria-hidden="true">✔</span> <strong>Tracción demostrada.</strong> Rendimiento acreditado en Plan Estatal y Europa: coherencia al pedir encaje en el PRI.</li>
+            <li><span class="ok" aria-hidden="true">✔</span> <strong>Impacto territorial.</strong> Retorno directo en centros, equidad y bienestar docente.</li>
+            <li><span class="ok" aria-hidden="true">✔</span> <strong>Retención y atracción de talento.</strong> Un PRI inclusivo evita fuga e incorpora nuevos grupos al INPEX.</li>
+            <li><span class="ok" aria-hidden="true">✔</span> <strong>Capacidad operativa.</strong> Agenda de interlocución y documentos de posición listos.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -531,7 +263,7 @@
           <h3>5) Crecimiento del INPEX</h3>
           <p>Atraer e incorporar nuevos investigadores y grupos al Instituto, facilitando adscripciones, para fortalecer nuestras capacidades y masa crítica.</p>
         </div>
-      </div>        <div class="card">
+        <div class="card">
           <h3>6) Desburocratización y apoyo inmediato (Ventanilla INPEX)</h3>
           <p>Servicio ágil con calendario de convocatorias, plantillas de memorias y presupuestos, soporte en justificación y checklist administrativo.</p>
         </div>
@@ -573,8 +305,8 @@
       <h2 id="t-contacto" class="section-title">Contacto</h2>
       <div class="card">
         <p>¿Tienes una propuesta o comentario? Te leo con atención. Puedes usar el formulario (Microsoft Forms) o escribirme por correo.</p>
-        <div class="form" style="aspect-ratio: 16/9; background:var(--surface); border:1px dashed var(--border); display:block; border-radius:.8rem; margin:.75rem 0;">
-          <iframe width="640px" height="480px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=i8Q5CzKSqEirxNGYcqnHe0h3Yttf4bNEme2kwjw36yNUODJET1U1TVVWSzlDNDFTM1ZDMlY4SVFGNy4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; width:100%; height:80vh; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+        <div class="form" style="aspect-ratio:16/9;background:var(--surface);border:1px dashed var(--border);display:block;border-radius:.8rem;margin:.75rem 0;">
+          <iframe loading="lazy" width="640" height="480" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=i8Q5CzKSqEirxNGYcqnHe0h3Yttf4bNEme2kwjw36yNUODJET1U1TVVWSzlDNDFTM1ZDMlY4SVFGNy4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border:none;max-width:100%;width:100%;height:80vh;max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen title="Formulario de sugerencias"></iframe>
         </div>
       </div>
     </section>
@@ -585,8 +317,8 @@
       <p>© 2025 Fran Naranjo · Candidatura a la Dirección del INPEX · Hecho con HTML/CSS.</p>
       <div class="theme-switcher">
         <button id="theme-toggle" aria-label="Alternar tema claro/oscuro">
-          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.182a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.06l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.243 18.129a.75.75 0 001.06-1.06l-1.59-1.59a.75.75 0 10-1.06 1.06l1.59 1.59zM12 18.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM4.268 18.129a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.06l-1.59 1.59zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.182 7.5a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 001.06 1.06l1.591-1.59z" /></svg>
-          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.106.853l-.793 1.48a10.5 10.5 0 008.307 15.679c.995.155 1.777-.96 1.341-1.802a5.553 5.553 0 01-.706-.593c-.879-.879-1.393-2.03-1.393-3.238 0-1.782 1.05-3.472 2.606-4.475a.75.75 0 01.88-1.282 11.095 11.095 0 00-3.321-2.903 11.554 11.554 0 00-6.196-1.75c-.266 0-.528.005-.787.016a.75.75 0 01-.577-.521 3.42 3.42 0 00-1.381-2.274.75.75 0 01-.853-.106z" clip-rule="evenodd" /></svg>
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.182a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.06l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.243 18.129a.75.75 0 001.06-1.06l-1.59-1.59a.75.75 0 10-1.06 1.06l1.59 1.59zM12 18.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM4.268 18.129a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.06l-1.59 1.59zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.182 7.5a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 001.06 1.06l1.591-1.59z"/></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display:none" aria-hidden="true"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.106.853l-.793 1.48a10.5 10.5 0 008.307 15.679c.995.155 1.777-.96 1.341-1.802a5.553 5.553 0 01-.706-.593c-.879-.879-1.393-2.03-1.393-3.238 0-1.782 1.05-3.472 2.606-4.475a.75.75 0 01.88-1.282 11.095 11.095 0 00-3.321-2.903 11.554 11.554 0 00-6.196-1.75c-.266 0-.528.005-.787.016a.75.75 0 01-.577-.521 3.42 3.42 0 00-1.381-2.274.75.75 0 01-.853-.106z" clip-rule="evenodd"/></svg>
           <span class="theme-text">Claro</span>
         </button>
       </div>
@@ -600,6 +332,12 @@
     const sunIcon = themeToggle.querySelector('.sun-icon');
     const moonIcon = themeToggle.querySelector('.moon-icon');
     const themeText = themeToggle.querySelector('.theme-text');
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+    function updateThemeColor(theme){
+      if(!themeMeta) return;
+      themeMeta.setAttribute('content', theme === 'dark' ? '#121212' : '#006633');
+    }
 
     // Función para establecer el tema
     function setTheme(theme) {
@@ -616,6 +354,7 @@
         themeText.textContent = 'Claro';
         localStorage.setItem('theme', 'light');
       }
+      updateThemeColor(theme);
     }
 
     // Comprobar el tema preferido del usuario o el guardado
@@ -623,40 +362,33 @@
     if (savedTheme) {
       setTheme(savedTheme);
     } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      // Si no hay tema guardado, usa la preferencia del sistema
       setTheme('dark');
     } else {
-      setTheme('light'); // Por defecto, modo claro
+      setTheme('light');
     }
 
-    // Event listener para el botón de alternar tema
+    // Alternar tema
     themeToggle.addEventListener('click', () => {
-      if (body.classList.contains('dark-mode')) {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
+      setTheme(body.classList.contains('dark-mode') ? 'light' : 'dark');
     });
 
-    // Script para marcar enlace activo al hacer scroll
-    const links = [...document.querySelectorAll('nav a')]
-    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean)
+    // Script para marcar enlace activo al hacer scroll (y accesible con aria-current)
+    const links = [...document.querySelectorAll('nav a')];
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const id = '#' + entry.target.id
-        const link = links.find(a => a.getAttribute('href') === id)
+        const id = '#' + entry.target.id;
+        const link = links.find(a => a.getAttribute('href') === id);
         if (link) {
           if (entry.isIntersecting) {
-            links.forEach(l => l.classList.remove('active'));
-            link.classList.add('active')
+            links.forEach(l => { l.classList.remove('active'); l.removeAttribute('aria-current'); });
+            link.classList.add('active');
+            link.setAttribute('aria-current','page');
           }
         }
-      })
-    }, {
-      rootMargin: '-40% 0px -55% 0px',
-      threshold: 0
-    })
-    sections.forEach(s => obs.observe(s))
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(s => obs.observe(s));
   </script>
 </body>
 </html>
