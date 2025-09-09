@@ -18,11 +18,12 @@
   <meta name="twitter:description" content="Descubre la propuesta de Fran Naranjo para dirigir el INPEX de la UEx. Conoce su programa de 10 medidas, prioridades y trayectoria profesional.">
   <meta name="twitter:image" content="assets/logo-inpex.png">
 
-  <meta name="theme-color" content="#006633" /> <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#006633" />
   <link rel="icon" href="assets/logo-inpex.png">
   <style>
     /* --- CSS base --- */
     :root {
+      /* Colores base (modo claro por defecto) */
       --bg: #ffffff;
       --text: #212121;
       --muted: #6b7280;
@@ -31,7 +32,7 @@
       --brand-50: #e6f2ed; /* Tono muy claro del verde para fondos sutiles */
       --surface: #f8fafc;
       --border: #e5e7eb;
-      --ok: #047857; /* Se mantiene para mensajes de éxito, es un buen verde */
+      --ok: #047857;
 
       /* Variables para el Modo Oscuro */
       --bg-dark: #121212; /* Fondo casi negro para modo oscuro */
@@ -39,21 +40,21 @@
       --muted-dark: #a0a0a0; /* Texto muted en modo oscuro */
       --surface-dark: #1e1e1e; /* Superficies en modo oscuro */
       --border-dark: #333333; /* Bordes en modo oscuro */
+      --brand-dark: #00cc66; /* Un verde un poco más brillante para el modo oscuro para contraste */
+      --brand-700-dark: #00994d;
+      --brand-50-dark: #0d281a;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: var(--bg-dark);
-        --text: var(--text-dark);
-        --muted: var(--muted-dark);
-        --surface: var(--surface-dark);
-        --border: var(--border-dark);
-        /* Ajuste para el color de marca en modo oscuro si fuera necesario, 
-           pero el verde oscuro puede funcionar bien. */
-        --brand: #00cc66; /* Un verde un poco más brillante para el modo oscuro para contraste */
-        --brand-700: #00994d;
-        --brand-50: #0d281a;
-      }
+    /* Reglas para el modo oscuro activado manualmente */
+    body.dark-mode {
+      --bg: var(--bg-dark);
+      --text: var(--text-dark);
+      --muted: var(--muted-dark);
+      --surface: var(--surface-dark);
+      --border: var(--border-dark);
+      --brand: var(--brand-dark);
+      --brand-700: var(--brand-700-dark);
+      --brand-50: var(--brand-50-dark);
     }
 
     html {
@@ -65,6 +66,7 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
       background: var(--bg);
       color: var(--text);
+      transition: background-color .3s ease, color .3s ease; /* Transición suave al cambiar de tema */
     }
 
     a {
@@ -111,7 +113,6 @@
       content: "";
       position: absolute;
       inset: 0;
-      /* Ajuste del gradiente para usar los nuevos colores de marca */
       background: radial-gradient(1200px 400px at 50% -10%, var(--brand-50), transparent), linear-gradient(180deg, var(--surface), transparent 60%);
       z-index: -1
     }
@@ -121,7 +122,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: .75rem 0
+      padding: .75rem 0;
+      position: relative; /* Para posicionar el switch de tema */
     }
 
     .brand {
@@ -278,6 +280,7 @@
       border-radius: 1rem;
       padding: 1rem;
       break-inside: avoid-page;
+      transition: background-color .3s ease, border-color .3s ease; /* Transición suave */
     }
 
     .chip {
@@ -357,8 +360,63 @@
     footer {
       padding: 2rem 0;
       border-top: 1px solid var(--border);
-      color: var(--muted)
+      color: var(--muted);
+      transition: border-color .3s ease, color .3s ease; /* Transición suave */
     }
+
+    /* --- Theme Switcher --- */
+    .theme-switcher {
+      /* Posicionado a la derecha del todo */
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: .5rem;
+      z-index: 1000; /* Asegurar que esté por encima de otros elementos */
+    }
+
+    .theme-switcher button {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: .5rem .75rem;
+      border-radius: .5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .theme-switcher button:hover {
+      background: var(--brand-50);
+      color: var(--brand);
+      border-color: var(--brand);
+    }
+
+    /* Iconos SVG para el switcher */
+    .theme-switcher svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor; /* El color del icono será el mismo que el texto del botón */
+    }
+    @media (max-width: 600px) { /* Ajustar posición en pantallas pequeñas */
+      .theme-switcher {
+        position: static; /* Volver a flujo normal */
+        transform: none;
+        margin-top: 1rem;
+        text-align: center;
+      }
+      .topbar {
+        flex-direction: column; /* Apilar elementos */
+        align-items: center;
+      }
+      nav {
+        margin-top: 1rem;
+      }
+    }
+
 
     /* --- Print (A4) --- */
     @page {
@@ -372,7 +430,8 @@
       .actions,
       .form,
       .feedback,
-      .skip {
+      .skip,
+      .theme-switcher { /* Ocultar también el switch en la impresión */
         display: none !important
       }
 
@@ -405,6 +464,13 @@
         <a href="#trayectoria">Trayectoria</a>
         <a href="#contacto">Contacto</a>
       </nav>
+      <div class="theme-switcher">
+        <button id="theme-toggle" aria-label="Alternar tema claro/oscuro">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.182a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.06l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.243 18.129a.75.75 0 001.06-1.06l-1.59-1.59a.75.75 0 10-1.06 1.06l1.59 1.59zM12 18.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM4.268 18.129a.75.75 0 001.06 1.06l1.59-1.59a.75.75 0 10-1.06-1.06l-1.59 1.59zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM6.182 7.5a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 001.06 1.06l1.591-1.59z" /></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.106.853l-.793 1.48a10.5 10.5 0 008.307 15.679c.995.155 1.777-.96 1.341-1.802a5.553 5.553 0 01-.706-.593c-.879-.879-1.393-2.03-1.393-3.238 0-1.782 1.05-3.472 2.606-4.475a.75.75 0 01.88-1.282 11.095 11.095 0 00-3.321-2.903 11.554 11.554 0 00-6.196-1.75c-.266 0-.528.005-.787.016a.75.75 0 01-.577-.521 3.42 3.42 0 00-1.381-2.274.75.75 0 01-.853-.106z" clip-rule="evenodd" /></svg>
+          <span class="theme-text">Claro</span>
+        </button>
+      </div>
     </div>
 
     <div class="container hero-main">
@@ -420,7 +486,7 @@
         </div>
       </div>
       <div style="text-align:center">
-        <img class="avatar" src="assets/foto-flnc.jpg" alt="Retrato de Fran Naranjo, candidato a la dirección del INPEX." onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 240\'%3E%3Crect width=\'240\' height=\'240\' rx=\'24\' fill=\'%23f3f4f6\'/%3E%3Ctext x=\'50%25\' y=\'54%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Arial\' font-size=\'22\' fill=\'%2399a\'%3EFoto no disponible%3C/text%3E%3C/svg%3E'" />
+        <img class="avatar" src="assets/foto-flnc.jpg" alt="Foto de Fran Naranjo, candidato a la dirección del INPEX." onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 240\'%3E%3Crect width=\'240\' height=\'240\' rx=\'24\' fill=\'%23f3f4f6\'/%3E%3Ctext x=\'50%25\' y=\'54%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Arial\' font-size=\'22\' fill=\'%2399a\'%3EFoto no disponible%3C/text%3E%3C/svg%3E'" />
       </div>
     </div>
   </header>
@@ -525,12 +591,56 @@
 
   <footer>
     <div class="container">
-      <p>© 2025 Fran Naranjo · Candidatura a la Dirección del INPEX · Hecho con HTML/CSS · <a href="https://github.com/naranjocorrea/INPEX" target="_blank" rel="noopener noreferrer">Ver código en GitHub</a></p>
+      <p>© 2025 Fran Naranjo · Candidatura a la Dirección del INPEX · Hecho con HTML/CSS.</p>
     </div>
   </footer>
 
   <script>
-    // Marcar enlace activo al hacer scroll
+    // Script para el modo claro/oscuro
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const sunIcon = themeToggle.querySelector('.sun-icon');
+    const moonIcon = themeToggle.querySelector('.moon-icon');
+    const themeText = themeToggle.querySelector('.theme-text');
+
+    // Función para establecer el tema
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark-mode');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'inline-block';
+        themeText.textContent = 'Oscuro';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.remove('dark-mode');
+        sunIcon.style.display = 'inline-block';
+        moonIcon.style.display = 'none';
+        themeText.textContent = 'Claro';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Comprobar el tema preferido del usuario o el guardado
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      // Si no hay tema guardado, usa la preferencia del sistema
+      setTheme('dark');
+    } else {
+      setTheme('light'); // Por defecto, modo claro
+    }
+
+    // Event listener para el botón de alternar tema
+    themeToggle.addEventListener('click', () => {
+      if (body.classList.contains('dark-mode')) {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+    });
+
+    // Script para marcar enlace activo al hacer scroll
     const links = [...document.querySelectorAll('nav a')]
     const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean)
     const obs = new IntersectionObserver((entries) => {
