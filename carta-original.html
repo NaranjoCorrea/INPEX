@@ -16,8 +16,8 @@
 
     body {
       font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      font-size: 11pt;
+      line-height: 1.5; /* Reducido para comprimir el texto */
+      font-size: 10.5pt; /* Ligeramente reducido para que quepa en menos páginas */
       color: var(--text);
       background-color: #f4f4f4;
       margin: 0;
@@ -28,7 +28,7 @@
       width: 21cm; /* Ancho de un folio A4 */
       min-height: 29.7cm; /* Alto de un folio A4 */
       margin: 2cm auto;
-      padding: 2cm;
+      padding: 2.5cm 2cm; /* Aumento del padding superior */
       background: white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       box-sizing: border-box;
@@ -111,7 +111,7 @@
     }
 
     .letter-body p {
-      margin: 0 0 1.2rem 0;
+      margin: 0 0 1.1rem 0; /* Reducido el espacio entre párrafos */
     }
     
     .destacado {
@@ -121,7 +121,7 @@
 
     /* Firma y pie de página */
     .signature-section {
-      margin-top: 4rem;
+      margin-top: 2rem; /* Reducido el margen para acercarlo al texto */
       text-align: left;
     }
     
@@ -130,7 +130,7 @@
     }
 
     .signature-image {
-      width: 150px; /* Ajusta el tamaño de la firma según tu imagen */
+      width: 150px;
       height: auto;
       margin-top: 10px;
     }
@@ -189,7 +189,6 @@
 
     <div class="signature-section">
       <p>Un cordial saludo,</p>
-      <img class="signature-image" src="assets/firma-flnc.png" alt="Firma de Fran Naranjo">
       <p class="signature-name">Fran Naranjo</p>
     </div>
   </div>
