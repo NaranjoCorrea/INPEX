@@ -9,7 +9,8 @@
   <meta property="og:title" content="Fran Naranjo | Candidatura Dirección INPEX (UEx)" />
   <meta property="og:description" content="Programa completo, prioridades y trayectoria de Fran Naranjo para dirigir el INPEX. Una propuesta para defender la investigación educativa, psicológica y social." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://naranjocorrea.github.io/INPEX/" /> <meta property="og:image" content="assets/logo-inpex.png" />
+  <meta property="og:url" content="https://naranjocorrea.github.io/INPEX/" />
+  <meta property="og:image" content="assets/logo-inpex.png" />
   <meta property="og:locale" content="es_ES" />
   
   <meta name="twitter:card" content="summary_large_image">
@@ -17,8 +18,7 @@
   <meta name="twitter:description" content="Descubre la propuesta de Fran Naranjo para dirigir el INPEX de la UEx. Conoce su programa de 10 medidas, prioridades y trayectoria profesional.">
   <meta name="twitter:image" content="assets/logo-inpex.png">
 
-  <meta name="theme-color" content="#1f7a3f" />
-  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#006633" /> <meta name="color-scheme" content="light dark" />
   <link rel="icon" href="assets/logo-inpex.png">
   <style>
     /* --- CSS base --- */
@@ -26,18 +26,19 @@
       --bg: #ffffff;
       --text: #212121;
       --muted: #6b7280;
-      --brand: #1f7a3f;
-      --brand-700: #14532d;
-      --brand-50: #ecfdf5;
+      --brand: #006633; /* Verde corporativo del INPEX */
+      --brand-700: #004d26; /* Tono más oscuro del verde */
+      --brand-50: #e6f2ed; /* Tono muy claro del verde para fondos sutiles */
       --surface: #f8fafc;
       --border: #e5e7eb;
-      --ok: #047857;
-      /* Nuevas variables para Dark Mode */
-      --bg-dark: #0f172a;
-      --text-dark: #f8fafc;
-      --muted-dark: #94a3b8;
-      --surface-dark: #1e293b;
-      --border-dark: #334155;
+      --ok: #047857; /* Se mantiene para mensajes de éxito, es un buen verde */
+
+      /* Variables para el Modo Oscuro */
+      --bg-dark: #121212; /* Fondo casi negro para modo oscuro */
+      --text-dark: #e0e0e0; /* Texto claro para modo oscuro */
+      --muted-dark: #a0a0a0; /* Texto muted en modo oscuro */
+      --surface-dark: #1e1e1e; /* Superficies en modo oscuro */
+      --border-dark: #333333; /* Bordes en modo oscuro */
     }
 
     @media (prefers-color-scheme: dark) {
@@ -47,6 +48,11 @@
         --muted: var(--muted-dark);
         --surface: var(--surface-dark);
         --border: var(--border-dark);
+        /* Ajuste para el color de marca en modo oscuro si fuera necesario, 
+           pero el verde oscuro puede funcionar bien. */
+        --brand: #00cc66; /* Un verde un poco más brillante para el modo oscuro para contraste */
+        --brand-700: #00994d;
+        --brand-50: #0d281a;
       }
     }
 
@@ -105,6 +111,7 @@
       content: "";
       position: absolute;
       inset: 0;
+      /* Ajuste del gradiente para usar los nuevos colores de marca */
       background: radial-gradient(1200px 400px at 50% -10%, var(--brand-50), transparent), linear-gradient(180deg, var(--surface), transparent 60%);
       z-index: -1
     }
@@ -270,8 +277,7 @@
       border: 1px solid var(--border);
       border-radius: 1rem;
       padding: 1rem;
-      /* Añadido para mantener las tarjetas en una sola pieza al imprimir */
-      break-inside: avoid-page; 
+      break-inside: avoid-page;
     }
 
     .chip {
@@ -519,7 +525,7 @@
 
   <footer>
     <div class="container">
-      <p>© 2025 Fran Naranjo · Candidatura a la Dirección del INPEX · Hecho con HTML/CSS </p>
+      <p>© 2025 Fran Naranjo · Candidatura a la Dirección del INPEX · Hecho con HTML/CSS · <a href="https://github.com/naranjocorrea/INPEX" target="_blank" rel="noopener noreferrer">Ver código en GitHub</a></p>
     </div>
   </footer>
 
